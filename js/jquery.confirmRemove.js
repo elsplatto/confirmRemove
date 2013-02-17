@@ -1,8 +1,9 @@
 (function ($) {
 	"use strict";
 	$.fn.confirmRemove = function (optionsList) {
-		var defaults, options, obj, confirmHTML;
+		var defaults, options, obj, confirmHTML, removeClass;
 		obj = $(this);
+		removeClass = obj[0].classList[0];
 		defaults = {
 			targetClass: 'holder',
 			confirmShellClass: 'confirm',
@@ -13,37 +14,46 @@
 			cancelButtonText: 'Cancel',
 			cancelButtonDefaultClass: 'btnCancel',
 			cancelButtonClasses: '',
-			hideOnClick: true,
-			htmlURL: null
+			hideButtonOnClick: true,
+			htmlURL: null 
 		};
 		options = $.extend(defaults, optionsList);
-				
+		
+		//build shell HTML		
 		if (options.htmlURL === null) {
 			confirmHTML = '<div class="' + options.confirmShellClass + '">';
 			confirmHTML += '<p>' + options.confirmQuestion + '</p>';
 			confirmHTML += '<a href="#" class="' + options.confirmButtonDefaultClass + ' ' + options.confirmButtonClasses + '">' + options.confirmButtonText + '</a>';
 			confirmHTML += '<a href="#" class="' + options.cancelButtonDefaultClass + '  ' + options.cancelButtonClasses + '">' + options.cancelButtonText + '</a>';
 			confirmHTML += '</div>';
+		} else {
+			$.get(options.htmlURL, function (data) { 
+				confirmHTML = data
+				console.log(confirmHTML);
+			});
 		}
 				
 		obj.on('click', function (e) {
-			var targetEl;
+			var targetEl, eventTarget;
 			e.preventDefault();
-			if (options.hideOnClick) {
-				$(this).hide();
+			eventTarget = e.target;
+			if (options.hideButtonOnClick) {
+				$(eventTarget).hide();
 			}
 			targetEl = $(this).closest('.' + options.targetClass);
 			$(targetEl).append(confirmHTML);
 			
+			//attach click event to cancel button
 			$('.' + options.cancelButtonDefaultClass).on('click', function (e) {
 				e.preventDefault();
+				$(this).closest('.' + options.targetClass).find('.' + removeClass).show();
 				$(this).closest('.' + options.confirmShellClass).remove();
-				obj.show();
 			});
 			
+			//attach click event to confirm button
 			$('.' + options.confirmButtonDefaultClass).on('click', function (e) {
 				e.preventDefault();
-				$(targetEl).remove();
+				$(this).closest('.' + options.targetClass).remove();
 			});
 		});
 	};

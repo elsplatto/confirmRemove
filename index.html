@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html> <!--<![endif]-->
 
 <html lang="en">
 <head>
@@ -9,10 +13,17 @@
 
 	<script type="text/javascript">
 	$().ready(function() {
-	 	$('.remove').confirmRemove({
+	 	/*
+		$('.remove').confirmRemove({
 			confirmQuestion: 'Are you sure you want to remove this element?',
 			confirmButtonClasses: 'btnOrange'
 		});
+		*/
+		
+		$('.remove').confirmRemove({
+			htmlURL: 'ajax/ajax.html'
+		});
+		
 	});
 	
 	</script>
@@ -38,7 +49,7 @@
 		background-color:#f0f0f0;
 		width:150px;
 		height:auto;
-		min-height:200px;
+		min-height:220px;
 	}
 	
 	.remove {
@@ -81,6 +92,12 @@
 		height:100%;
 		background-color:rgba(255,255,255,0.95);
 	}
+	/*
+	Need this if you want it to work in IE8
+	*/
+	.lt-ie9 .confirm {
+		background-color:#fff;
+	}
 	
 	.confirm p {
 		padding:20px;
@@ -94,12 +111,13 @@
 		color:#fff;
 		padding:10px;
 		text-align:center;
-		background-image: linear-gradient(bottom, #fb8f02 23%, #f8ab48 77%);
-		background-image: -o-linear-gradient(bottom, #fb8f02 23%, #f8ab48 77%);
-		background-image: -moz-linear-gradient(bottom, #fb8f02 23%, #f8ab48 77%);
-		background-image: -webkit-linear-gradient(bottom, #fb8f02 23%, #f8ab48 77%);
-		background-image: -ms-linear-gradient(bottom, #fb8f02 23%, #f8ab48 77%);
-		background-image: -webkit-gradient(
+		background: #f8ab48;
+		background: linear-gradient(bottom, #fb8f02 23%, #f8ab48 77%);
+		background: -o-linear-gradient(bottom, #fb8f02 23%, #f8ab48 77%);
+		background: -moz-linear-gradient(bottom, #fb8f02 23%, #f8ab48 77%);
+		background: -webkit-linear-gradient(bottom, #fb8f02 23%, #f8ab48 77%);
+		background: -ms-linear-gradient(bottom, #fb8f02 23%, #f8ab48 77%);
+		background: -webkit-gradient(
 			linear,
 			left bottom,
 			left top,
@@ -118,55 +136,61 @@
 	<div class="holder">
 		<a href="#" class="remove" title="Remove this element">-</a>
 		<div class="feature"></div>
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+		<p>1. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
 	</div>
 	
 	<div class="holder">
 		<a href="#" class="remove" title="Remove this element">-</a>
 		<div class="feature"></div>
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+		<p>2. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
 	</div>
 	
 	<div class="holder">
 		<a href="#" class="remove" title="Remove this element">-</a>
 		<div class="feature"></div>
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+		<p>3. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
 	</div>
 	
 	<div class="holder">
 		<a href="#" class="remove" title="Remove this element">-</a>
 		<div class="feature"></div>
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+		<p>4. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
 	</div>
 	
 	<div class="holder">
 		<a href="#" class="remove" title="Remove this element">-</a>
 		<div class="feature"></div>
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+		<p>5. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
 	</div>
 	
 	<div class="holder">
 		<a href="#" class="remove" title="Remove this element">-</a>
 		<div class="feature"></div>
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+		<p>6. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
 	</div>
 	
 	<div class="holder">
 		<a href="#" class="remove" title="Remove this element">-</a>
 		<div class="feature"></div>
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+		<p>7. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
 	</div>
 	
 	<div class="holder">
 		<a href="#" class="remove" title="Remove this element">-</a>
 		<div class="feature"></div>
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+		<p>8. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
 	</div>
-	
+
 	<div class="holder">
 		<a href="#" class="remove" title="Remove this element">-</a>
 		<div class="feature"></div>
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+		<p>9. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+	</div>
+
+	<div class="holder">
+		<a href="#" class="remove" title="Remove this element">-</a>
+		<div class="feature"></div>
+		<p>10. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
 	</div>
 	
 	
