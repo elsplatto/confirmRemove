@@ -4,7 +4,7 @@
 		var defaults, options, obj, confirmHTML, removeClass;
 		obj = $(this);
 		removeClass = obj[0].classList[0];
-		defaults = {
+			defaults = {
 			targetClass: 'holder',
 			confirmShellClass: 'confirm',
 			confirmQuestion: 'Are you sure?',
@@ -15,7 +15,8 @@
 			cancelButtonDefaultClass: 'btnCancel',
 			cancelButtonClasses: '',
 			hideButtonOnClick: true,
-			htmlURL: null 
+			htmlURL: null ,
+			onBeforeRemove : function () {}
 		};
 		options = $.extend(defaults, optionsList);
 		
@@ -28,8 +29,7 @@
 			confirmHTML += '</div>';
 		} else {
 			$.get(options.htmlURL, function (data) { 
-				confirmHTML = data
-				console.log(confirmHTML);
+				confirmHTML = data;
 			});
 		}
 				
